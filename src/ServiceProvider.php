@@ -27,7 +27,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 	{
 		$configPath = __DIR__ . '/../config/laravel-tcpdf.php';
 		$this->mergeConfigFrom($configPath, 'laravel-tcpdf');
-		$this->app->bindShared('pdf', function ($app) {
+		$this->app->singleton('pdf', function ($app) {
 			return new Pdf($app);
 		});
 		AliasLoader::getInstance()->alias('PDF', 'Elibyy\TCPDF\Facades\Pdf');
